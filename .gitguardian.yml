@@ -1,0 +1,20 @@
+# GitGuardian ignore patterns
+# Este arquivo ajuda o GitGuardian a ignorar falsos positivos conhecidos
+
+paths-ignore:
+  # Ignorar arquivos de exemplo e documentação que contêm apenas placeholders
+  - "**/*.example"
+  - "**/*.md"
+  - "**/INSTRUCOES_ENV.md"
+  - "**/create_env*.ps1"
+  - "**/.env.example"
+
+# Padrões que são claramente placeholders e não credenciais reais
+matches-ignore:
+  - name: "SMTP placeholder in documentation"
+    match: "SUBSTITUA_PELO_SEU_EMAIL_AQUI|SUBSTITUA_PELA_SUA_SENHA_SMTP_AQUI|SUA_SENHA_POSTGRES_AQUI"
+  - name: "Example email addresses"
+    match: "teste@exemplo\.com|seu@email\.com|your-email@gmail\.com"
+  - name: "Placeholder passwords"
+    match: "your-password|SUA_SENHA|SUBSTITUA"
+
