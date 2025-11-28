@@ -1,0 +1,6 @@
+# Garantir que arquivos .env nunca sejam commitados acidentalmente
+*.env filter=git-crypt diff=git-crypt
+.env filter=git-crypt diff=git-crypt
+.env.* filter=git-crypt diff=git-crypt
+!*.env.example
+
