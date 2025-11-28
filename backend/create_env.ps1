@@ -27,10 +27,11 @@ REDIS_URL=redis://localhost:6379/0
 
 # Email (for notifications)
 # IMPORTANTE: Configure suas credenciais SMTP reais abaixo
+# Exemplo de configuração (SUBSTITUA pelos valores reais):
 SMTP_HOST=smtp.gmail.com
 SMTP_PORT=587
-SMTP_USER=seu-email@gmail.com
-SMTP_PASSWORD=SUA_SENHA_SMTP_AQUI
+SMTP_USER=SUBSTITUA_PELO_SEU_EMAIL_AQUI
+SMTP_PASSWORD=SUBSTITUA_PELA_SUA_SENHA_SMTP_AQUI
 SMTP_FROM=noreply@convencaocoletiva.com.br
 
 # Storage

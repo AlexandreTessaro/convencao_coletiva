@@ -30,11 +30,11 @@ class Settings(BaseSettings):
     # Redis
     REDIS_URL: str = "redis://localhost:6379/0"
     
-    # Email
+    # Email (configure via environment variables, never hardcode credentials)
     SMTP_HOST: str = "smtp.gmail.com"
     SMTP_PORT: int = 587
-    SMTP_USER: str = ""
-    SMTP_PASSWORD: str = ""
+    SMTP_USER: str = ""  # Set via .env file
+    SMTP_PASSWORD: str = ""  # Set via .env file
     SMTP_FROM: str = "noreply@convencaocoletiva.com.br"
     
     # Storage
