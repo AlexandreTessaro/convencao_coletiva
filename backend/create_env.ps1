@@ -1,13 +1,20 @@
 # Script para criar arquivo .env com as credenciais do PostgreSQL
 Write-Host "Criando arquivo .env..." -ForegroundColor Green
 
-$secretKey = "a490394c74a005366dcac80215bc13b69e56724c32f4f98bba444210d6c84d4a"
+# Gera uma SECRET_KEY aleatória segura (64 caracteres hexadecimais)
+$bytes = New-Object byte[] 32
+[System.Security.Cryptography.RandomNumberGenerator]::Fill($bytes)
+$secretKey = ($bytes | ForEach-Object { $_.ToString("x2") }) -join ""
+
+Write-Host "Gerando SECRET_KEY segura..." -ForegroundColor Cyan
 
 $envContent = @"
 # Database
-DATABASE_URL=postgresql://postgres:gajseEwNF2KO0a2KfW1w@localhost:5432/convencao_coletiva
+# IMPORTANTE: Substitua SUA_SENHA_POSTGRES_AQUI pela senha real do PostgreSQL
+DATABASE_URL=postgresql://postgres:SUA_SENHA_POSTGRES_AQUI@localhost:5432/convencao_coletiva
 
 # Security
+# SECRET_KEY gerada automaticamente - mantenha segura e não compartilhe
 SECRET_KEY=$secretKey
 ALGORITHM=HS256
 ACCESS_TOKEN_EXPIRE_MINUTES=30
@@ -19,10 +26,11 @@ CORS_ORIGINS=http://localhost:3000,http://localhost:3001
 REDIS_URL=redis://localhost:6379/0
 
 # Email (for notifications)
+# IMPORTANTE: Configure suas credenciais SMTP reais abaixo
 SMTP_HOST=smtp.gmail.com
 SMTP_PORT=587
-SMTP_USER=your-email@gmail.com
-SMTP_PASSWORD=your-password
+SMTP_USER=seu-email@gmail.com
+SMTP_PASSWORD=SUA_SENHA_SMTP_AQUI
 SMTP_FROM=noreply@convencaocoletiva.com.br
 
 # Storage
@@ -44,8 +52,9 @@ $envContent | Out-File -FilePath ".env" -Encoding utf8 -NoNewline
 Write-Host "✓ Arquivo .env criado com sucesso!" -ForegroundColor Green
 Write-Host ""
 Write-Host "Configurações aplicadas:" -ForegroundColor Cyan
-Write-Host "  - Database: postgresql://postgres:***@localhost:5432/convencao_coletiva" -ForegroundColor Yellow
-Write-Host "  - SECRET_KEY: Configurado" -ForegroundColor Yellow
+Write-Host "  - Database: Configure SUA_SENHA_POSTGRES_AQUI no arquivo .env" -ForegroundColor Yellow
+Write-Host "  - SECRET_KEY: Gerada automaticamente (mantenha segura!)" -ForegroundColor Yellow
+Write-Host "  - SMTP: Configure SUA_SENHA_SMTP_AQUI no arquivo .env" -ForegroundColor Yellow
 Write-Host ""
 Write-Host "Proximos passos:" -ForegroundColor Cyan
 Write-Host '  - Certifique-se de que o PostgreSQL esta rodando' -ForegroundColor White

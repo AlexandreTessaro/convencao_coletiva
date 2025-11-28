@@ -13,10 +13,13 @@ Ou crie manualmente o arquivo `backend/.env` com o seguinte conteúdo:
 
 ```env
 # Database
-DATABASE_URL=postgresql://postgres:gajseEwNF2KO0a2KfW1w@localhost:5432/convencao_coletiva
+# IMPORTANTE: Substitua SUA_SENHA_POSTGRES_AQUI pela senha real do PostgreSQL
+DATABASE_URL=postgresql://postgres:SUA_SENHA_POSTGRES_AQUI@localhost:5432/convencao_coletiva
 
 # Security
-SECRET_KEY=a490394c74a005366dcac80215bc13b69e56724c32f4f98bba444210d6c84d4a
+# IMPORTANTE: Gere uma SECRET_KEY segura com: openssl rand -hex 32
+# OU use o script create_env.ps1 que gera automaticamente
+SECRET_KEY=GERE_UMA_SECRET_KEY_SEGURA_AQUI
 ALGORITHM=HS256
 ACCESS_TOKEN_EXPIRE_MINUTES=30
 
@@ -27,10 +30,11 @@ CORS_ORIGINS=http://localhost:3000,http://localhost:3001
 REDIS_URL=redis://localhost:6379/0
 
 # Email (for notifications)
+# IMPORTANTE: Configure suas credenciais SMTP reais abaixo
 SMTP_HOST=smtp.gmail.com
 SMTP_PORT=587
-SMTP_USER=your-email@gmail.com
-SMTP_PASSWORD=your-password
+SMTP_USER=seu-email@gmail.com
+SMTP_PASSWORD=SUA_SENHA_SMTP_AQUI
 SMTP_FROM=noreply@convencaocoletiva.com.br
 
 # Storage
