@@ -1,6 +1,6 @@
 # Garantir que arquivos .env nunca sejam commitados acidentalmente
-*.env filter=git-crypt diff=git-crypt
-.env filter=git-crypt diff=git-crypt
-.env.* filter=git-crypt diff=git-crypt
-!*.env.example
+# Nota: git-crypt requer configuração adicional. Por enquanto, confie no .gitignore
+*.env filter= 
+.env filter=
+.env.* filter=
 
